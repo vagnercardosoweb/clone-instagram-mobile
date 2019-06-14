@@ -21,11 +21,11 @@ export default class Feed extends Component {
       >
         <Image source={camera} />
       </TouchableOpacity>
-    )
+    ),
   });
 
   state = {
-    feed: []
+    feed: [],
   };
 
   async componentDidMount() {
@@ -45,14 +45,22 @@ export default class Feed extends Component {
     socket.on('like', likePost => {
       this.setState({
         feed: this.state.feed.map(post =>
-          post._id === likePost._id ? likePost : post
-        )
+          post._id === likePost._id ? likePost : post,
+        ),
       });
     });
   };
 
   handleLike = id => {
     backend.post(`/posts/${id}/like`);
+  };
+
+  renderEmpty = () => {
+    return (
+      <View style={styles.noResult}>
+        <Text style={styles.noResultText}>Não existe resultados.</Text>
+      </View>
+    );
   };
 
   render() {
@@ -77,7 +85,7 @@ export default class Feed extends Component {
               <Image
                 style={styles.feedImage}
                 source={{
-                  uri: `http://192.168.0.1:3333/files/${item.image}`
+                  uri: `http://192.168.0.1:3333/files/${item.image}`,
                 }}
               />
 
@@ -105,6 +113,7 @@ export default class Feed extends Component {
               </View>
             </View>
           )}
+          ListEmptyComponent={this.renderEmpty}
         />
       </View>
     );

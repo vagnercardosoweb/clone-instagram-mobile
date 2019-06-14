@@ -11,7 +11,7 @@ export default StyleSheet.create({
 
   feedImage: {
     width: '100%',
-    height: 280,
+    height: 380,
     marginVertical: 20,
   },
 
@@ -68,5 +68,16 @@ export default StyleSheet.create({
 
   headerRight: {
     marginRight: 20,
+  },
+
+  noResult: {
+    flex: 1,
+    marginTop: 20,
+  },
+
+  noResultText: {
+    color: '#000000',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

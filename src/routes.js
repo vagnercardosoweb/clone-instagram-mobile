@@ -18,7 +18,6 @@ const AppNavigator = createStackNavigator(
   },
   {
     mode: 'modal',
-    headerBackTitleVisible: false,
     headerLayoutPreset: 'center',
     defaultNavigationOptions: {
       headerTitle: <Image source={logo} />,
