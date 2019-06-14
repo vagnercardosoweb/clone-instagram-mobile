@@ -1,17 +1,31 @@
+import React from 'react';
+import { Image } from 'react-native';
 import {
   createAppContainer,
-  createSwitchNavigator,
   createStackNavigator,
+  createSwitchNavigator
 } from 'react-navigation';
 
-import MainScreen from '~/pages/Main';
+import Feed from './pages/Feed';
+import New from './pages/New';
 
-const AppNavigator = createStackNavigator({
-  Main: {
-    screen: MainScreen,
+import logo from './assets/logo.png';
+
+const AppNavigator = createStackNavigator(
+  {
+    Feed,
+    New
   },
-});
+  {
+    mode: 'modal',
+    headerBackTitleVisible: false,
+    headerLayoutPreset: 'center',
+    defaultNavigationOptions: {
+      headerTitle: <Image source={logo} />,
+      headerBackTitle: null,
+      headerTintColor: '#000000'
+    }
+  }
+);
 
-const Routes = createAppContainer(createSwitchNavigator({ AppNavigator }));
-
-export default Routes;
+export default createAppContainer(createSwitchNavigator({ AppNavigator }));
